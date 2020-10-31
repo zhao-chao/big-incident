@@ -40,14 +40,13 @@ $(function () {
 		e.preventDefault()
 		// 2. 发起Ajax的POST请求
 		var data = {
-			// 获取用户名
+			// 获取用户名post
 			username: $('#form_reg [name=username]').val(),
 			// 获取密码
 			password: $('#form_reg [name=password]').val(),
 		}
-		$.post('http://ajax.frontend.itheima.net/api/reguser', data, function (
-			res
-		) {
+		// 发送post请求
+		$.post('/api/reguser', data, function (res) {
 			// 判断是否成功
 			if (res.status !== 0) {
 				// 失败的话弹出提示框
@@ -64,11 +63,12 @@ $(function () {
 		// 阻止默认提交行为
 		e.preventDefault()
 		$.ajax({
-			url: 'http://ajax.frontend.itheima.net/api/login',
+			url: '/api/login',
 			method: 'POST',
 			// 快速获取表单中的数据
 			data: $(this).serialize(),
 			success: function (res) {
+				// 判断登录是否成功
 				if (res.status !== 0) {
 					return layer.msg('登录失败！')
 				}
