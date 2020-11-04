@@ -14,6 +14,7 @@
 			<div class="layui-card-body">
 				<!-- 发布文章的表单 -->
 				<form class="layui-form">
+					<!-- 第一行 -->
 					<div class="layui-form-item">
 						<label class="layui-form-label">文章标题</label>
 						<div class="layui-input-block">
@@ -28,10 +29,25 @@
 							/>
 						</div>
 					</div>
+					<!-- 第二行 -->
+					<div class="layui-form-item">
+						<label class="layui-form-label">文章类别</label>
+						<div class="layui-input-block">
+							<select
+								name="cate_id"
+								lay-verify="required"
+							></select>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>
-
+		<script type="text/html" id="tpl-cate">
+			<option value="">请选择文章类别</option>
+			{{each data}}
+			<option value="{{$value.Id}}">{{$value.name}}</option>
+			{{/each}}
+		</script>
 		<!-- 导入第三方的 JS 插件 -->
 		<script src="/assets/lib/layui/layui.all.js"></script>
 		<script src="/assets/lib/jquery.js"></script>
